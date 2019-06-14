@@ -1,0 +1,19 @@
+【ip address/frontend address】
+{
+	redir https://{host}{uri}
+}
+
+【ip address/frontend address】
+{{
+	gzip {
+		level 9
+	}
+	proxy /b 【backend address】 {
+		without /b
+		websocket
+		transparent
+		except static
+	}
+	proxy / 【frontend address】
+	tls self_signed
+}
