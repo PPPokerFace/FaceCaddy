@@ -1,0 +1,19 @@
+http://127.0.0.1
+{
+	redir https://{host}{uri}
+}
+
+https://127.0.0.1
+{
+	gzip {
+		level 9
+	}
+	proxy /b http://127.0.0.1:8000 {
+		without /b
+		websocket
+		transparent
+		except static
+	}
+	proxy / http://127.0.0.1:8080
+	tls self_signed
+}
